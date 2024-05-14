@@ -8,3 +8,22 @@
 
 // ##########################################
 // write your code here
+
+document.addEventListener('DOMContentLoaded', function() {
+    const noButton = document.getElementById('no-button');
+    noButton.addEventListener('mouseover', moveButton);
+    noButton.addEventListener('click', moveButton);
+
+    function moveButton() {
+        const x = Math.random() * (window.innerWidth - this.clientWidth);
+        const y = Math.random() * (window.innerHeight - this.clientHeight);
+        this.style.position = 'absolute';
+        this.style.left = `${x}px`;
+        this.style.top = `${y}px`;
+    }
+
+    const yesButton = document.getElementById('yes-button');
+    yesButton.addEventListener('click', function() {
+        alert('I love you too!!');
+    });
+});
