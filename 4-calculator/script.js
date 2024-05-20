@@ -2,33 +2,33 @@ const outputDisplay = document.getElementById('output-value');
 const historyDisplay = document.getElementById('history-value');
 const numberButtons = document.getElementsByClassName('number');
 const operatorButtons = document.getElementsByClassName('operator');
+const clearButton = document.getElementById('clear');
+const backspaceButton = document.getElementById('backspace');
+const equalsButton = document.getElementById('=');
 
-let value = '';
-let history = '';
-let operator = '';
+let currentValue = '';
+let previousValue = '';
+let currentOperator = '';
 
 function appendNumber(number) {
-    if (value == '0') {
-        value = number;
-    } else if (value.length <= 16) {
-        value += number;
+    if (currentValue === '0') {
+        currentValue = number;
+    } else if (currentValue.length <= 16) {
+        currentValue += number;
     }
-
-    outputDisplay.innerHTML = value;
+    outputDisplay.innerHTML = currentValue;
 }
 
 for (let btn of numberButtons) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
         appendNumber(btn.innerHTML);
     });
 }
 
-document.getElementById('clear').addEventListener('click', function () {
+clearButton.addEventListener('click', () => {
     outputDisplay.innerHTML = '';
-    value = '';
-});
-
-document.getElementById('backspace').addEventListener('click', function () {
-    value = value.slice(0, -1);
-    outputDisplay.innerHTML = value;
+    currentValue = '';
+    previousValue = '';
+    currentOperator = '';
+    historyDisplay.innerHTML = '';
 });
