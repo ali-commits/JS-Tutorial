@@ -2,41 +2,45 @@ const outputDisplay = document.getElementById('output-value');
 const historyDisplay = document.getElementById('history-value');
 const numberButtons = document.getElementsByClassName('number');
 const operatorButtons = document.getElementsByClassName('operator');
+const clearButton = document.getElementById('clear');
+const backspaceButton = document.getElementById('backspace');
+const equalsButton = document.getElementById('=');
 
-let value = '';
-let history = '';
-let operator = '';
+let currentValue = '';
+let previousValue = '';
+let currentOperator = '';
 
 function appendNumber(number) {
-    if (value == '0') {
-        value = number;
-    } else if (value.length <= 16) {
-        value += number;
+    if (currentValue === '0') {
+        currentValue = number;
+    } else if (currentValue.length <= 16) {
+        currentValue += number;
     }
-
-    outputDisplay.innerHTML = value;
+    outputDisplay.innerHTML = currentValue;
 }
 
 for (let btn of numberButtons) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
         appendNumber(btn.innerHTML);
     });
 }
 
-document.getElementById('clear').addEventListener('click', function () {
+clearButton.addEventListener('click', () => {
     outputDisplay.innerHTML = '';
-    value = '';
+    currentValue = '';
+    previousValue = '';
+    currentOperator = '';
+    historyDisplay.innerHTML = '';
 });
 
-document.getElementById('backspace').addEventListener('click', function () {
-    value = value.slice(0, -1);
-    outputDisplay.innerHTML = value;
+backspaceButton.addEventListener('click', () => {
+    currentValue = currentValue.slice(0, -1);
+    outputDisplay.innerHTML = currentValue;
 });
 
 function calculate(num1, num2, op) {
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-
     switch (op) {
         case '+':
             return (num1 + num2).toString();
@@ -45,6 +49,7 @@ function calculate(num1, num2, op) {
         case '×':
             return (num1 * num2).toString();
         case '÷':
+            if (num2 === 0) return 'Error'; // Handle division by zero
             return (num1 / num2).toString();
         case '%':
             return (num1 % num2).toString();
@@ -53,30 +58,30 @@ function calculate(num1, num2, op) {
     }
 }
 
-function operatorClick(op) {
-    if (value == '') return;
-    else if (history == '') {
-        history = value;
+function handleOperatorClick(op) {
+    if (currentValue === '') return;
+    if (previousValue === '') {
+        previousValue = currentValue;
     } else {
-        history = calculate(history, value, operator);
+        previousValue = calculate(previousValue, currentValue, currentOperator);
     }
-    value = '';
-    operator = op;
+    currentValue = '';
+    currentOperator = op;
     outputDisplay.innerHTML = '';
-    historyDisplay.innerHTML = history;
+    historyDisplay.innerHTML = previousValue;
 }
 
 for (let btn of operatorButtons) {
-    btn.addEventListener('click', function () {
-        operatorClick(btn.innerHTML);
+    btn.addEventListener('click', () => {
+        handleOperatorClick(btn.innerHTML);
     });
 }
 
-document.getElementById('=').addEventListener('click', function () {
-    if (history == '' || value == '') return;
-    value = calculate(history, value, operator);
-    history = '';
-    operator = '';
-    outputDisplay.innerHTML = value;
+equalsButton.addEventListener('click', () => {
+    if (previousValue === '' || currentValue === '') return;
+    currentValue = calculate(previousValue, currentValue, currentOperator);
+    previousValue = '';
+    currentOperator = '';
+    outputDisplay.innerHTML = currentValue;
     historyDisplay.innerHTML = '';
 });
