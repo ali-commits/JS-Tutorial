@@ -16,3 +16,33 @@
 
 // ##########################################
 // write your code here
+
+$('#yes-button').click(function () {
+    alert('I love you too!!');
+});
+
+const CHANCE = 0.3;
+let stage = 1;
+
+function changeloaction() {
+    if (stage == 1) {
+        let h = Math.floor(Math.random() * 80) + 10;
+        let w = Math.floor(Math.random() * 80) + 10;
+
+        $('#no-button').css('top', h + 'vh');
+        $('#no-button').css('left', w + 'vw');
+
+        if (Math.random() < CHANCE) {
+            $('#no-button').css('top', '40vh');
+            $('#no-button').css('left', '40vw');
+
+            stage = 2;
+        }
+    } else {
+        setTimeout(function () {
+            $('#no-button').css('z-index', '-1');
+        }, 200);
+    }
+}
+$('#no-button').on('mouseover', changeloaction);
+
