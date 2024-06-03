@@ -1,8 +1,12 @@
-$('#Todo').sortable({axis: 'y'});
+$('#Todo').sortable({ axis: 'y' });
 
-$('.close').click(function () {$(this).parent().hide()});
+$('.close').click(function () {
+    $(this).parent().hide();
+});
 
-$('#Todo').on('click', 'li', function () {$(this).toggleClass('checked')});
+$('#Todo li').on('click', function () {
+    $(this).toggleClass('checked');
+});
 
 $('.addBtn').click(function () {
     let inputValue = $('#myInput').val();
