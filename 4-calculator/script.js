@@ -33,11 +33,16 @@ clearButton.addEventListener('click', () => {
     historyDisplay.innerHTML = '';
 });
 
+<<<<<<< HEAD
 backspaceButton.addEventListener('click', () => {
+=======
+backspaceButton.addEventListener('click', function () {
+>>>>>>> main
     currentValue = currentValue.slice(0, -1);
     outputDisplay.innerHTML = currentValue;
 });
 
+<<<<<<< HEAD
 function calculate(num1, num2, op) {
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
@@ -84,4 +89,36 @@ equalsButton.addEventListener('click', () => {
     currentOperator = '';
     outputDisplay.innerHTML = currentValue;
     historyDisplay.innerHTML = '';
+=======
+function calculate(number1, number2, operator) {
+    if (operator == '+') {
+        return number1 + number2;
+    }
+    if (operator == '-') {
+        return number1 - number2;
+    }
+    if (operator == '×') {
+        return number1 * number2;
+    }
+    if (operator == '÷') {
+        return number1 / number2;
+    }
+}
+
+for (let btn of operatorButtons) {
+    btn.addEventListener('click', function () {
+        previousValue = currentValue;
+        currentValue = '0';
+        outputDisplay.innerHTML = currentValue;
+        historyDisplay.innerHTML = previousValue;
+        currentOperator = btn.innerHTML;
+    });
+}
+
+document.getElementById('=').addEventListener('click', function () {
+    currentValue = calculate(Number(previousValue), Number(currentValue), currentOperator);
+    previousValue = '';
+    outputDisplay.innerHTML = currentValue;
+    historyDisplay.innerHTML = previousValue;
+>>>>>>> main
 });
