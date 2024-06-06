@@ -126,3 +126,9 @@ input {
 .addBtn:hover {
     background-color: #018786;
 }
+
+input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}

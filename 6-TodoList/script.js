@@ -8,7 +8,15 @@ $('#Todo li').on('click', function () {
     $(this).toggleClass('checked');
 });
 
-$('.addBtn').click(function () {
+$('.addBtn').click(addTask);
+
+$('#myInput').keypress(function (e) {
+    if (e.which === 13) {
+        addTask();
+    }
+});
+
+function addTask() {
     let inputValue = $('#myInput').val();
     if (inputValue === '') {
         alert('You must write something!');
@@ -21,4 +29,4 @@ $('.addBtn').click(function () {
         $('#Todo').append(task);
         $('#myInput').val('');
     }
-});
+}
