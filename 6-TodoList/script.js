@@ -1,10 +1,10 @@
 $('#Todo').sortable({ axis: 'y' });
 
-$('.close').click(function () {
-    $(this).parent().hide();
+$('#Todo').on('click', '.close', function () {
+    $(this).parent().remove();
 });
 
-$('#Todo li').on('click', function () {
+$('#Todo').on('click', 'li', function () {
     $(this).toggleClass('checked');
 });
 
