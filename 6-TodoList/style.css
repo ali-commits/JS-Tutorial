@@ -132,3 +132,22 @@ input:focus {
     border: none;
     box-shadow: none;
 }
+
+.clearAllBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 10px;
+    background: #f44336;
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 4rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.clearAllBtn:hover {
+    background-color: #d32f2f;
+}

@@ -30,3 +30,7 @@ function addTask() {
         $('#myInput').val('');
     }
 }
+
+$('.clearAllBtn').click(function () {
+    $('#Todo').empty();
+});
