@@ -132,3 +132,19 @@ input:focus {
     border: none;
     box-shadow: none;
 }
+
+.delete {
+    padding: 10px 20px;
+    background: #f44336;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 0.8rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.delete:hover {
+    background-color: #ad524b;
+}
