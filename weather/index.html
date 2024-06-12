@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Weather App</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Weather App</h1>
-            <div class="weather-search">
-                <input type="text" id="city" placeholder="Enter city" />
-                <button id="search-button">Search</button>
-            </div>
-            <div id="weather-result">
-                <h2 id="city-name"></h2>
-                <p id="temperature"></p>
-                <p id="weather-description"></p>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <div class="weather-search">
+            <input type="text" id="city" placeholder="Enter city">
+            <button id="search-button">Search</button>
         </div>
-        <script src="script.js" defer></script>
-    </body>
+        <div id="loading" class="loading-spinner"></div>
+        <div id="weather-result">
+            <h2 id="city-name"></h2>
+            <i id="weather-icon" class="wi" style="font-size: 48px;"></i>
+            <p id="temperature"></p>
+            <p id="weather-description"></p>
+        </div>
+    </div>
+</body>
 </html>
