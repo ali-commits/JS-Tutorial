@@ -1,20 +1,20 @@
 function isValidUsername(username) {
-    const usernamePattern = 
+    const usernamePattern = /.*/;
     return usernamePattern.test(username);
 }
 
 function isValidEmail(email) {
-    const emailPattern = 
+    const emailPattern = /.*/;
     return emailPattern.test(email);
 }
 
 function isValidPhone(phone) {
-    const phonePattern = 
+    const phonePattern = /.*/;
     return phonePattern.test(phone);
 }
 
 function isValidPassword(password) {
-    const passwordPattern = 
+    const passwordPattern = /.*/;
     return passwordPattern.test(password);
 }
 
